@@ -1,6 +1,39 @@
+body {
+     font-family: "Montserrat", sans-serif;
+    background: linear-gradient(to bottom, #142d4c, #38598b);
+    min-height: 100vh;
+    margin: 0;
+    background-attachment: fixed; 
+    display: flex;
+    justify-content: center;
+}
 .header-bar{
-    height:30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    height:60px;
     width: 80%;
-    background-color: black;
-    border-radius: 30px;
+    background: #222831;
+    border-radius: 10px;
+    position: relative;
+}
+.logo{
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background: orange;
+}
+.logo2{
+    margin-right: 10px;
+    background:#3b3f44;
+    padding: 10px;
+    border-radius: 10px;
+}
+.ex{
+    color: white;
+    position: absolute;
+    left:60px;
+    top:20px;
 }

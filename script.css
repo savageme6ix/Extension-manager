@@ -5,7 +5,9 @@ body {
     margin: 0;
     background-attachment: fixed; 
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    letter-spacing: 1px;
 }
 .header-bar{
     display: flex;
@@ -23,7 +25,6 @@ body {
     width: 42px;
     border-radius: 50%;
     margin-left: 10px;
-    background: orange;
 }
 .logo2{
     margin-right: 10px;
@@ -36,4 +37,30 @@ body {
     position: absolute;
     left:60px;
     top:20px;
+}
+.bar2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px; 
+    color: white;
+}
+
+.cont-right {
+    display: flex;
+    gap: 20px;
+    margin-left: 200px; 
+    align-items: center;
+}
+
+.p2, .p3 {
+    text-align: center;
+    margin: 0;
+    background: #222831;
+    border-radius: 10px;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

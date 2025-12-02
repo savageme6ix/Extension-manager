@@ -91,3 +91,8 @@ body {
     color: var(--text-light);
     font-family: "Montserrat", sans-serif;
 }
+.grid-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: auto;
+}

@@ -7,22 +7,35 @@ const extensionss = fetch("data.json")
         return response.json();
     })
     .then(data=>{
-        console.log(data)
-        data.forEach((extension)=>{
-            console.log(extension.name)
-          const main = document.querySelector(".grid-container")
-          main.innerHTML = gridHtml+= `
+        const main = document.querySelector(".grid-container")
+        data.forEach((extension)=>{   
+           gridHtml+= `
           <div class="ex-container">
             <div class="wrap">
             <img src = "${extension.logo}">
             <div class="mini">
             <span class="name">${extension.name}</span>
             <figcaption class="cap">${extension.description}</figcaption>
+            <div class="footer">
+                <button class = "remove">Remove</button>
+                <button class="toggle"><div class="circle"></div></button>
+            </div>
         </div> 
         </div>
         </div>
           `
+           
         })
+       main.innerHTML = gridHtml
+       
+       const toggleButtons = document.querySelectorAll(".toggle");
+       toggleButtons.forEach(button=>{
+        button.addEventListener("click", function() {
+                const circle = this.querySelector(".circle");
+                circle.classList.toggle("active");
+            });
+       });
     })    .catch(error=>{
         console.error('There was a problem', error)
-    })
+    });
+

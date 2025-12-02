@@ -24,7 +24,9 @@ body {
 .container{
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
+    gap: 20px;
 }
 .header-bar{
     display: flex;
@@ -91,16 +93,20 @@ body {
     color: var(--text-light);
     font-family: "Montserrat", sans-serif;
 }
-.grid-container{
+.grid-container {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: auto;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
 }
+
 .ex-container{
     display: flex;
+    flex-direction: column;
     color: var(--text-light);
-    height: 200px;
-    width: 500px;
+   min-height: 200px;
+    width: 100%;
     background: var(--card-bg);
     border-radius: 20px;
 }
@@ -114,6 +120,8 @@ body {
     height: 62px;
 }
 .mini{
+    display: flex;
+    flex-direction: column;
     margin-left: 10px;
 }
 .cap{

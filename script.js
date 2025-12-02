@@ -35,6 +35,14 @@ const extensionss = fetch("data.json")
                 circle.classList.toggle("active");
             });
        });
+
+       const removeButtons = document.querySelectorAll(".remove");
+       removeButtons.forEach(button=>{
+        button.addEventListener("click", ()=>{
+            const element = document.querySelector(".ex-container");
+            element.remove();
+        })
+       })
     })    .catch(error=>{
         console.error('There was a problem', error)
     });

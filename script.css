@@ -96,3 +96,30 @@ body {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: auto;
 }
+.ex-container{
+    display: flex;
+    color: var(--text-light);
+    height: 200px;
+    width: 500px;
+    background: var(--card-bg);
+    border-radius: 20px;
+}
+.wrap{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.ex-container img{
+    height: 62px;
+}
+.mini{
+    margin-left: 10px;
+}
+.cap{
+    margin-top: 10px;
+    color: #afb1b4;
+}
+.name{
+    font-weight: bold;
+}

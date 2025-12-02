@@ -1,13 +1,30 @@
+:root {
+    --primary-bg: #142d4c;
+    --secondary-bg: #38598b;
+    --card-bg: #222831;
+    --card-hover: #3b3f44;
+    --text-light: #ffffff;
+    --border-radius: 10px;
+}
+* {
+    box-sizing: border-box;
+}
 body {
      font-family: "Montserrat", sans-serif;
-    background: linear-gradient(to bottom, #142d4c, #38598b);
+    background: linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
     min-height: 100vh;
     margin: 0;
     background-attachment: fixed; 
     display: flex;
+    flex-direction: column;
     align-items: center;
     flex-direction: column;
     letter-spacing: 1px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
 }
 .header-bar{
     display: flex;
@@ -15,11 +32,17 @@ body {
     align-items: center;
     margin-top: 20px;
     height:60px;
-    width: 80%;
-    background: #222831;
-    border-radius: 10px;
-    position: relative;
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
 }
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
 .logo{
     height: 42px;
     width: 42px;
@@ -27,40 +50,44 @@ body {
     margin-left: 10px;
 }
 .logo2{
-    margin-right: 10px;
-    background:#3b3f44;
+    margin-right:10px;
+    background: var(--card-hover);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 .ex{
-    color: white;
-    position: absolute;
-    left:60px;
-    top:20px;
+     color: var(--text-light);
+    font-weight: 600
+}
+.theme-toggle{
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    border: none;
 }
 .bar2 {
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    padding: 20px; 
+    padding: 20px 0; 
     color: white;
+    width: 100%;
 }
 
 .cont-right {
     display: flex;
     gap: 20px;
-    margin-left: 200px; 
     align-items: center;
 }
-
-.p2, .p3 {
+.filter-btn{
     text-align: center;
     margin: 0;
-    background: #222831;
-    border-radius: 10px;
-    width: 80px;
+    padding: 0;
+    background: var(--card-bg);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+     width: 80px;
     height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--text-light);
+    font-family: "Montserrat", sans-serif;
 }

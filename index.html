@@ -4,28 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="script.css">
-  
   <title>Manager</title>
 </head>
 <body>
-  <div class="header-bar">
-    <img src="https://play-lh.googleusercontent.com/BZ8HLroTJxJCzyzFEJYg4d9PiHzEmbNaeaDTbZlFXpD8gqJ-gUNPCYLvDiQj6ELMRiY=w240-h480-rw" class="logo">
-   <span class="ex">Extensions</span>
-   <img src="assets/images/icon-sun.svg" class="logo2">
-  </div>
-  <div class="bar2">
-    <div class="cont-left">
-    <p>Extensions List</p>
+  <div class="container">
+  <header class="header-bar">
+    <div class="header-left">
+      <img src="https://play-lh.googleusercontent.com/BZ8HLroTJxJCzyzFEJYg4d9PiHzEmbNaeaDTbZlFXpD8gqJ-gUNPCYLvDiQj6ELMRiY=w240-h480-rw" alt="Logo" class="logo">
+      <span class="ex">Extensions</span>
     </div>
-  <div class="cont-right">
-    <p class="p1">All</p>
-    <p class="p2">Active</p>
-    <p class="p3">Inactive</p>
-  </div>
-  </div>
-  <div class="grid-container">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <img src="assets/images/icon-sun.svg" alt="Theme toggle" class="logo2">
+    </button>
+  </header>
+  
+  <nav class="bar2">
+    <h2 class="cont-left">Extensions List</h2>
+    <div class="cont-right">
+      <button class="filter-btn orange">All</button>
+      <button class="filter-btn">Active</button>
+      <button class="filter-btn">Inactive</button>
+    </div>
+  </nav>
 
-  </div>
+  <main class="grid-container">
+    <!-- Content here -->
+  </main>
+</div>
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

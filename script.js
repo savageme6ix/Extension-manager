@@ -1,8 +1,9 @@
-let path = window.location.pathname;
+const pageName = window.location.pathname.split('/').pop().toLowerCase();
 
-let mainpage = path.endsWith("index.html") || path.endsWith("/");
-let activepage = path.endsWith("active.html");
-let inactivepage = path.endsWith("inactive.html");
+// Define the page flags based on the exact filename, or empty/root path for index.
+const activepage = pageName === "active.html";
+const inactivepage = pageName === "inactive.html";
+const mainpage = pageName === "index.html" || pageName === "";
 
 let active = JSON.parse(localStorage.getItem('activeE')) || [];
 let inactive = JSON.parse(localStorage.getItem('inactiveE')) || [];

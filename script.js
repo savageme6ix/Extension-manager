@@ -38,7 +38,6 @@ const extensionss = fetch("data.json")
         data.forEach((extension, index)=>{   
             const extensionId = `ext-${index}`;
             const isActive = active.includes(extensionId);
-            const isInactive = inactive.includes(extensionId);
 
             let shouldRender = false; /*Logic: show card based on page*/
 

@@ -1,6 +1,9 @@
-let mainpage = window.location.pathname.includes("index.html");
-let activepage = window.location.pathname.includes("active.html");
-let inactivepage = window.location.pathname.includes("inactive.html");
+let path = window.location.pathname;
+
+let mainpage = path.endsWith("index.html") || path.endsWith("/");
+let activepage = path.endsWith("active.html");
+let inactivepage = path.endsWith("inactive.html");
+
 let active = JSON.parse(localStorage.getItem('activeE')) || [];
 let inactive = JSON.parse(localStorage.getItem('inactiveE')) || [];
 

@@ -1,5 +1,5 @@
 let gridHtml = ``;
-let mainpage = document.querySelector(".filter-btnA");
+let mainpage = window.location.pathname.includes("index.html");
 let activepage = window.location.pathname.includes("active.html");
 let inactivepage = window.location.pathname.includes("inactive.html");
 let active = JSON.parse(localStorage.getItem('activeE')) || [];
@@ -87,6 +87,12 @@ const extensionss = fetch("data.json")
         })
        }
 
+       if(document.querySelector(".filter-btn")){
+        document.querySelector(".filter-btn").addEventListener("click", ()=>{
+            window.location.href = "index.html"
+        })
+       }
+
        const toggleButtons = document.querySelectorAll(".toggle");
        toggleButtons.forEach(button=>{
         button.addEventListener("click", function() {
@@ -110,7 +116,7 @@ const extensionss = fetch("data.json")
                     active = active.filter(id => id !== extensionId);
                 }
                 localStorage.setItem('activeE', JSON.stringify(active));
-                localStorage.setItem('inactiveE', JSON.stringify(inactive))
+                localStorage.setItem('inactiveE', JSON.stringify(inactive))  
             });
        });
 

@@ -18,8 +18,7 @@ const main = document.querySelector(".grid-container")
 
 function createExtensionCard(extension, id, isActive){
     const circleClass = isActive ? "circle active" : "circle";
-    const highlightClass = isActive ? "filter-btnA orange" : "orange";
-    
+
     return `
      <div class="ex-container" data-id = "${id}">
             <div class="wrap">
@@ -112,7 +111,7 @@ function setupEventListeners(){
     if (themeToggleButton) {
         themeToggleButton.addEventListener("click", toggleTheme);
     }
-    
+
        if(document.querySelector(".filter-btnA")){
         document.querySelector(".filter-btnA").addEventListener("click", ()=>{
             window.location.href = "active.html"

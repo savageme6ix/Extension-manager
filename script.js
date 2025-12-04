@@ -12,7 +12,8 @@ const main = document.querySelector(".grid-container")
 
 function createExtensionCard(extension, id, isActive){
     const circleClass = isActive ? "circle active" : "circle";
-
+    const highlightClass = isActive ? "filter-btnA orange" : "orange";
+    
     return `
      <div class="ex-container" data-id = "${id}">
             <div class="wrap">
@@ -66,6 +67,22 @@ const extensionss = fetch("data.json")
     })    .catch(error=>{
         console.error('There was a problem', error)
     });
+
+function highlightCurrentFilter() {
+    const pagePath = window.location.pathname.split('/').pop().toLowerCase();
+    
+    const btnAll = document.querySelector(".filter-btn");
+    const btnActive = document.querySelector(".filter-btnA");
+    const btnInactive = document.querySelector(".filter-btnB");
+
+    if (pagePath === "active.html") {
+        if (btnActive) btnActive.classList.add('orange');
+    } else if (pagePath === "inactive.html") {
+        if (btnInactive) btnInactive.classList.add('orange');
+    } else if (pagePath === "index.html" || pagePath === "") {
+        if (btnAll) btnAll.classList.add('orange');
+    }
+}
 
 function setupEventListeners(){
 
@@ -132,4 +149,5 @@ function setupEventListeners(){
             element.remove();
         })
        })
+       highlightCurrentFilter();
     }

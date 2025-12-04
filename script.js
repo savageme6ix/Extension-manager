@@ -5,6 +5,12 @@ const activepage = pageName === "active.html";
 const inactivepage = pageName === "inactive.html";
 const mainpage = pageName === "index.html" || pageName === "";
 
+(function applyThemeOnLoad() {
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+    }
+})();
+
 let active = JSON.parse(localStorage.getItem('activeE')) || [];
 let inactive = JSON.parse(localStorage.getItem('inactiveE')) || [];
 
@@ -97,10 +103,16 @@ function toggleTheme() {
     } else {
         localStorage.removeItem('theme'); // Removes the preference to default to dark mode
     }
+
 }
 
 function setupEventListeners(){
 
+    const themeToggleButton = document.querySelector(".theme-toggle");
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener("click", toggleTheme);
+    }
+    
        if(document.querySelector(".filter-btnA")){
         document.querySelector(".filter-btnA").addEventListener("click", ()=>{
             window.location.href = "active.html"

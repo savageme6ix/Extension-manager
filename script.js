@@ -84,6 +84,21 @@ function highlightCurrentFilter() {
     }
 }
 
+// Function to handle the theme toggle logic
+function toggleTheme() {
+    const body = document.body;
+
+    // 1. Toggle the 'light-mode' class on the body
+    body.classList.toggle('light-mode');
+
+    // 2. Save the new state to localStorage
+    if (body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+    } else {
+        localStorage.removeItem('theme'); // Removes the preference to default to dark mode
+    }
+}
+
 function setupEventListeners(){
 
        if(document.querySelector(".filter-btnA")){
@@ -150,4 +165,5 @@ function setupEventListeners(){
         })
        })
        highlightCurrentFilter();
+       lightDarkMode();
     }

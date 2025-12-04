@@ -104,6 +104,18 @@ body {
     color: var(--text-light);
     font-family: "Montserrat", sans-serif;
 }
+.filter-btn{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: var(--card-bg);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+     width: 80px;
+    height: 40px;
+    color: var(--text-light);
+    font-family: "Montserrat", sans-serif;
+}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 

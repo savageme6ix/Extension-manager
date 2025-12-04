@@ -195,3 +195,31 @@ body {
     transform: translateX(23px);
     background: rgb(196, 54, 3);
 }
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #1a1a2e; 
+}
+/* body.light-mode .container {
+    background-color: #f0f0f0; 
+} */
+
+body.light-mode .ex-container{
+    background-color: #f0f0f0; 
+}
+
+body.light-mode .ex-container{
+    color: #1a1a2e;  
+}
+
+body.light-mode .header-bar {
+    background-color: #e8e8e8;
+}
+
+body.light-mode .cont-left{
+    color: #1a1a2e;
+}
+
+body.light-mode .ex{
+    color: #1a1a2e;
+}

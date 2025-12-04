@@ -59,7 +59,7 @@ body {
 }
 .ex{
      color: var(--text-light);
-    font-weight: 600
+    font-weight: 600;
 }
 .theme-toggle{
     background: transparent;
@@ -224,4 +224,7 @@ body.light-mode .ex{
 
 body.light-mode .cap{
     color: #1f1f31;
+}
+body,.header-bar,.ex-container{
+    transition: background 0.5s ease, color 0.5s ease;
 }

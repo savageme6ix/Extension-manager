@@ -176,5 +176,4 @@ function setupEventListeners(){
         })
        })
        highlightCurrentFilter();
-       lightDarkMode();
     }

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Extension Manager",
+  "version": "1.0",
+  "description": "Manage your browser extensions — enable, disable, remove.",
+  "permissions": ["management"],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Extensions"
+  }
+}

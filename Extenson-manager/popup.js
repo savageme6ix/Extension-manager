@@ -36,42 +36,45 @@ function createExtensionCard(extension, id, isActive){
     `
 
 }
-const extensionss = fetch(chrome.runtime.getURL("data.json"))
-    .then(response=>{
-        if(!response.ok){
-            throw new Error (`Http error! status: ${response.status}`);
+chrome.management.getAll((extensions) => {
+    let gridHtml = "";
+
+    extensions.forEach((extension, index) => {
+        // Ignore themes & your own extension
+        if (extension.type !== "extension" || extension.id === chrome.runtime.id) {
+            return;
         }
-        return response.json();
-    })
-    .then(data=>{
-        let gridHtml = ``
-        data.forEach((extension, index)=>{   
-            const extensionId = `ext-${index}`;
-            const isActive = active.includes(extensionId);
 
-            let shouldRender = false; /*Logic: show card based on page*/
+        const extensionId = extension.id;
+        const isActive = extension.enabled;
 
-            if(mainpage){
-               shouldRender = true;
+        let shouldRender = false;
 
-            }else if(activepage && isActive){
-               shouldRender = true
+        if (mainpage) {
+            shouldRender = true;
+        } else if (activepage && isActive) {
+            shouldRender = true;
+        } else if (inactivepage && !isActive) {
+            shouldRender = true;
+        }
 
-            }else if(inactivepage && !isActive){
-                shouldRender = true
-            }
-            if(shouldRender){
-                gridHtml += createExtensionCard(extension, extensionId, isActive)
-            }
-           
-        });
-       main.innerHTML = gridHtml
-       
-       setupEventListeners();
-
-    })    .catch(error=>{
-        console.error('There was a problem', error)
+        if (shouldRender) {
+            gridHtml += createExtensionCard(
+                {
+                    logo: extension.icons?.[0]?.url || "default.png",
+                    name: extension.name,
+                    description: extension.description || "No description",
+                },
+                extensionId,
+                isActive
+            );
+        }
     });
+
+    main.innerHTML = gridHtml;
+    setupEventListeners();
+});
+
 
 function highlightCurrentFilter() {
     const pagePath = window.location.pathname.split('/').pop().toLowerCase();

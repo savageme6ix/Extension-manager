@@ -1,3 +1,9 @@
+if (window.innerWidth < 300) {
+    document.documentElement.style.width = "360px";
+    document.documentElement.style.maxWidth = "360px";
+    document.body.style.width = "360px";
+}
+
 const pageName = window.location.pathname.split('/').pop().toLowerCase();
 
 // Define the page flags based on the exact filename, or empty/root path for index.

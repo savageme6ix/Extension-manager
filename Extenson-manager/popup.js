@@ -11,43 +11,46 @@ const mainpage = pageName === "index.html" || pageName === "";
     }
 })();
 
-let active = JSON.parse(localStorage.getItem('activeE')) || [];
-let inactive = JSON.parse(localStorage.getItem('inactiveE')) || [];
+const main = document.querySelector(".grid-container");
 
-const main = document.querySelector(".grid-container")
-
-function createExtensionCard(extension, id, isActive){
+function createExtensionCard(extension, id, isActive) {
     const circleClass = isActive ? "circle active" : "circle";
 
     return `
-     <div class="ex-container" data-id = "${id}">
-            <div class="wrap">
-            <img src = "${extension.logo}">
+     <div class="ex-container" data-id="${id}">
+        <div class="wrap">
+            <img src="${extension.logo}">
             <div class="mini">
-            <span class="name">${extension.name}</span>
-            <figcaption class="cap">${extension.description}</figcaption>
-            <div class="footer">
-                <button class = "remove">Remove</button>
-                <button class="toggle"><div class="${circleClass}"></div></button>
-            </div>
-        </div> 
+                <span class="name">${extension.name}</span>
+                <figcaption class="cap">${extension.description}</figcaption>
+                <div class="footer">
+                    <button class="remove">Remove</button>
+                    <button class="toggle"><div class="${circleClass}"></div></button>
+                </div>
+            </div> 
         </div>
-        </div>
-    `
-
+     </div>
+    `;
 }
+
+/* -----------------------------------------
+    Load REAL browser extensions
+-------------------------------------------- */
+
 chrome.management.getAll((extensions) => {
     let gridHtml = "";
 
-    extensions.forEach((extension, index) => {
-        // Ignore themes & your own extension
-        if (extension.type !== "extension" || extension.id === chrome.runtime.id) {
-            return;
-        }
+    extensions.forEach((extension) => {
+        // Skip irrelevant items
+        if (extension.type !== "extension") return;
+
+        // Skip your own extension
+        if (extension.id === chrome.runtime.id) return;
 
         const extensionId = extension.id;
         const isActive = extension.enabled;
 
+        // Filter logic
         let shouldRender = false;
 
         if (mainpage) {
@@ -61,9 +64,9 @@ chrome.management.getAll((extensions) => {
         if (shouldRender) {
             gridHtml += createExtensionCard(
                 {
-                    logo: extension.icons?.[0]?.url || "default.png",
+                    logo: extension.icons?.[0]?.url || "assets/images/default.png",
                     name: extension.name,
-                    description: extension.description || "No description",
+                    description: extension.description || "No description available"
                 },
                 extensionId,
                 isActive
@@ -75,6 +78,7 @@ chrome.management.getAll((extensions) => {
     setupEventListeners();
 });
 
+/* ------------------------------------- */
 
 function highlightCurrentFilter() {
     const pagePath = window.location.pathname.split('/').pop().toLowerCase();
@@ -92,91 +96,75 @@ function highlightCurrentFilter() {
     }
 }
 
-// Function to handle the theme toggle logic
 function toggleTheme() {
     const body = document.body;
 
-    // 1. Toggle the 'light-mode' class on the body
     body.classList.toggle('light-mode');
 
-    // 2. Save the new state to localStorage
     if (body.classList.contains('light-mode')) {
         localStorage.setItem('theme', 'light');
     } else {
-        localStorage.removeItem('theme'); // Removes the preference to default to dark mode
+        localStorage.removeItem('theme');
     }
-
 }
 
-function setupEventListeners(){
+function setupEventListeners() {
 
     const themeToggleButton = document.querySelector(".theme-toggle");
     if (themeToggleButton) {
         themeToggleButton.addEventListener("click", toggleTheme);
     }
 
-       if(document.querySelector(".filter-btnA")){
-        document.querySelector(".filter-btnA").addEventListener("click", ()=>{
-            window.location.href = "active.html"
-        })
-       }
+    if (document.querySelector(".filter-btnA")) {
+        document.querySelector(".filter-btnA").addEventListener("click", () => {
+            window.location.href = "active.html";
+        });
+    }
 
-       if(document.querySelector(".filter-btnB")){
-        document.querySelector(".filter-btnB").addEventListener("click", ()=>{
-            window.location.href = "inactive.html"
-        })
-       }
+    if (document.querySelector(".filter-btnB")) {
+        document.querySelector(".filter-btnB").addEventListener("click", () => {
+            window.location.href = "inactive.html";
+        });
+    }
 
-       if(document.querySelector(".filter-btn")){
-        document.querySelector(".filter-btn").addEventListener("click", ()=>{
-            window.location.href = "index.html"
-        })
-       }
+    if (document.querySelector(".filter-btn")) {
+        document.querySelector(".filter-btn").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+    }
 
-       const toggleButtons = document.querySelectorAll(".toggle");
-       toggleButtons.forEach(button=>{
-        button.addEventListener("click", function() {
-                const circle = this.querySelector(".circle");
-                const container = this.closest(".ex-container")
-                const extensionId = container.dataset.id;
+    /* -----------------------------------------
+        Real toggle enable/disable
+    -------------------------------------------- */
+    const toggleButtons = document.querySelectorAll(".toggle");
+    toggleButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const circle = this.querySelector(".circle");
+            const container = this.closest(".ex-container");
+            const extensionId = container.dataset.id;
 
-                circle.classList.toggle("active");
+            circle.classList.toggle("active");
 
-                if (circle.classList.contains("active")) {
-                    // Add to active
-                    if (!active.includes(extensionId)) {
-                        active.push(extensionId);
-                    }
-                    // Remove from inactive
-                    inactive = inactive.filter(id => id !== extensionId);
-                } else {
-                    // Add to inactive
-                    if (!inactive.includes(extensionId)) {
-                        inactive.push(extensionId);
-                    }
-                    // Remove from active
-                    active = active.filter(id => id !== extensionId);
-                }
-                localStorage.setItem('activeE', JSON.stringify(active));
-                localStorage.setItem('inactiveE', JSON.stringify(inactive))  
-            });
-       });
+            const enable = circle.classList.contains("active");
 
-       const removeButtons = document.querySelectorAll(".remove");
-       removeButtons.forEach(button=>{
-        button.addEventListener("click", function(){
+            chrome.management.setEnabled(extensionId, enable);
+        });
+    });
+
+    /* -----------------------------------------
+        Real uninstall
+    -------------------------------------------- */
+    const removeButtons = document.querySelectorAll(".remove");
+    removeButtons.forEach(button => {
+        button.addEventListener("click", function () {
             const element = this.closest(".ex-container");
             const extensionId = element.dataset.id;
 
-            /*Remove this ID from BOTH arrays*/
-            active = active.filter(id => id !== extensionId);
-            inactive = inactive.filter(id => id !== extensionId);
+            chrome.management.uninstall(extensionId, { showConfirmDialog: true }, () => {
+                element.remove();
+            });
+        });
+    });
 
-            localStorage.setItem('activeE', JSON.stringify(active));
-            localStorage.setItem('inactiveE', JSON.stringify(inactive));
-
-            element.remove();
-        })
-       })
-       highlightCurrentFilter();
-    }
+    highlightCurrentFilter();
+}

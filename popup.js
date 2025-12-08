@@ -81,7 +81,7 @@ function setupSearchFeature(allExtensions) {
     if (!searchInput) return;
 
     searchInput.addEventListener("input", () => {
-        const value = searchInput.value.toLowerCase();
+        const value = searchInput.value.toLowerCase().trim();
         const cards = document.querySelectorAll(".ex-container");
 
         // Loop through all cards

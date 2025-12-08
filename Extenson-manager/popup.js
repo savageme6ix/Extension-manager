@@ -91,7 +91,7 @@ function setupSearchFeature(allExtensions) {
 
         // Loop through all cards
         cards.forEach(card => {
-            const name = card.querySelector(".name").textContent.toLowerCase();
+            const name = card.querySelector(".name").textContent.toLowerCase().trim();
             const desc = card.querySelector(".cap").textContent.toLowerCase();
 
             // Match name or description

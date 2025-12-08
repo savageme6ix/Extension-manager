@@ -234,6 +234,10 @@ body {
     background: #ffffff25;
     box-shadow: 0 0 0 2px #ffffff30;
 }
+body.light-mode #searchInput{
+    background: #dadcdf;
+    color:var(--card-bg);
+}
 
 body.light-mode {
     background: #ffffff;

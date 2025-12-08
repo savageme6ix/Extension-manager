@@ -124,7 +124,7 @@ function toggleTheme() {
     // 2. Save the new state to localStorage
     if (body.classList.contains('light-mode')) {
         localStorage.setItem('theme', 'light');
-        icon.src = "assets/images/icons8-crescent-moon-100.png"
+        icon.src = "assets/images/icons8-crescent-moon-100.png";
     } else {
         localStorage.removeItem('theme'); // Removes the preference to default to dark mode
         icon.src = "assets/images/icon-sun.svg"

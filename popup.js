@@ -68,10 +68,34 @@ const extensionss = fetch("data.json")
        main.innerHTML = gridHtml
        
        setupEventListeners();
+       setupSearchFeature(data);
+
 
     })    .catch(error=>{
         console.error('There was a problem', error)
     });
+
+function setupSearchFeature(allExtensions) {
+    const searchInput = document.getElementById("searchInput");
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", () => {
+        const value = searchInput.value.toLowerCase();
+        const cards = document.querySelectorAll(".ex-container");
+
+        // Loop through all cards
+        cards.forEach(card => {
+            const name = card.querySelector(".name").textContent.toLowerCase();
+            const desc = card.querySelector(".cap").textContent.toLowerCase();
+
+            // Match name or description
+            const matches = name.includes(value) || desc.includes(value);
+
+            card.style.display = matches ? "flex" : "none";
+        });
+    });
+}
 
 function highlightCurrentFilter() {
     const pagePath = window.location.pathname.split('/').pop().toLowerCase();

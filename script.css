@@ -12,6 +12,7 @@
 body {
     font-family: "Montserrat", sans-serif;
     background: linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
+    min-height: 100vh;
     margin: 0;
     background-attachment: fixed; 
     display: flex;
@@ -19,16 +20,13 @@ body {
     align-items: center;
     flex-direction: column;
     letter-spacing: 1px;
-    width: 360px;
-    min-height: auto;
-    overflow-x: hidden;
 }
 .container{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 100%;
-    max-width: 360px;
+    max-width: 1000px;
+    gap: 20px;
 }
 .header-bar{
     display: flex;
@@ -120,8 +118,7 @@ body {
 }
 .grid-container {
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr);  */
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
     width: 100%;
     padding: 20px;

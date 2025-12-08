@@ -8,6 +8,7 @@ const mainpage = pageName === "index.html" || pageName === "";
 (function applyThemeOnLoad() {
     if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
+        document.querySelector(".logo2").src="assets/images/icons8-crescent-moon-100.png"
     }
 })();
 
@@ -116,15 +117,18 @@ function highlightCurrentFilter() {
 // Function to handle the theme toggle logic
 function toggleTheme() {
     const body = document.body;
-
+    const icon = document.querySelector(".logo2");
     // 1. Toggle the 'light-mode' class on the body
     body.classList.toggle('light-mode');
 
     // 2. Save the new state to localStorage
     if (body.classList.contains('light-mode')) {
         localStorage.setItem('theme', 'light');
+        icon.src = "assets/images/icons8-crescent-moon-100.png"
     } else {
         localStorage.removeItem('theme'); // Removes the preference to default to dark mode
+        icon.src = "assets/images/icon-sun.svg"
+        console.log(icon.computedStyle)
     }
 
 }

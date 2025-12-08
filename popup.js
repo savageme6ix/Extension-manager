@@ -36,7 +36,7 @@ function createExtensionCard(extension, id, isActive){
     `
 
 }
-const extensionss = fetch(chrome.runtime.getURL("data.json"))
+const extensionss = fetch("data.json")
     .then(response=>{
         if(!response.ok){
             throw new Error (`Http error! status: ${response.status}`);

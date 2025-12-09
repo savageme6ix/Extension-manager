@@ -275,7 +275,11 @@ body,.header-bar,.ex-container{
 /****************
    MEDIA QUERYS
 *****************/
-
+@media (max-width:1024px){
+    .bar2{
+        width: 95%;
+    }
+}
 @media (max-width: 873px){
     .grid-container {
     grid-template-columns: repeat(2, 1fr); 

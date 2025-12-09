@@ -331,3 +331,10 @@ body,.header-bar,.ex-container{
     }
 
 }
+
+@media (max-width: 375px){
+    .cont-right {
+    gap: 30px;
+    }
+
+}

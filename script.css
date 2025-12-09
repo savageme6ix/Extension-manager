@@ -280,6 +280,13 @@ body,.header-bar,.ex-container{
         width: 95%;
     }
 }
+
+@media (max-width:912px){
+    .grid-container{
+        gap:10px;
+        padding: 5px;
+    }
+}
 @media (max-width: 873px){
     .grid-container {
     grid-template-columns: repeat(2, 1fr); 

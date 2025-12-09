@@ -338,3 +338,19 @@ body,.header-bar,.ex-container{
     }
 
 }
+
+@media (max-width: 339px){
+    .cont-right {
+    gap: 20px;
+    }
+
+    .grid-container {
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 0px;
+    padding: 10px;
+    }
+    .ex-container{
+        margin-bottom: 10px;
+    }
+
+}

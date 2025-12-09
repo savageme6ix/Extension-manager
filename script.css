@@ -271,3 +271,30 @@ body.light-mode .cap{
 body,.header-bar,.ex-container{
     transition: background 0.5s ease, color 0.5s ease;
 }
+
+/****************
+   MEDIA QUERYS
+*****************/
+
+@media (max-width: 873px){
+    .grid-container {
+    grid-template-columns: repeat(2, 1fr); 
+    width: 95%;
+    }
+
+    .header-bar{
+    height:60px;
+    width: 93.5%;
+    }
+
+    .search-area {
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    }
+    
+    .bar2 {
+    width: 93.5%;
+    }
+}

@@ -317,6 +317,9 @@ body,.header-bar,.ex-container{
     gap: 10px;
     padding: 20px;
     }
+    .bar2{
+        margin-left: 15px;
+    }
 }
 
 @media (max-width: 505px){

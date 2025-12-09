@@ -23,7 +23,7 @@ function createExtensionCard(extension, id, isActive){
     return `
      <div class="ex-container" data-id = "${id}">
             <div class="wrap">
-            <img src = "${extension.logo}">
+            <img src = "${extension.logo}" class="logo-img">
             <div class="mini">
             <span class="name">${extension.name}</span>
             <figcaption class="cap">${extension.description}</figcaption>

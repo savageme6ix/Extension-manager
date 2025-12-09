@@ -354,3 +354,34 @@ body,.header-bar,.ex-container{
     }
 
 }
+
+@media (max-width: 323px){
+    .cont-right {
+    gap: 20px;
+    margin-left: 5px;
+    }
+
+    .grid-container {
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 0px;
+    }
+    .ex-container{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        width: 90%;
+        justify-self: center;
+    }
+    .cap{
+        width: 80%;
+    }
+    .wrap{
+        display: block;
+        padding-bottom: 20px; 
+        justify-content: center;
+    }
+    .logo-img{
+        margin-left: 65px;
+        margin-bottom: 10px;
+    }
+}

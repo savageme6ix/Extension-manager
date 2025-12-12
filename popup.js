@@ -8,7 +8,7 @@ const mainpage = pageName === "index.html" || pageName === "";
 (function applyThemeOnLoad() {
     if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
-        document.querySelector(".logo2").src="assets/images/icons8-crescent-moon-100.png"
+        document.querySelector(".logo2").src="assets/images/icons8-moon-50.png"
     }
 })();
 

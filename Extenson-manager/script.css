@@ -198,6 +198,12 @@ body {
     transform: translateX(23px);
     background: rgb(196, 54, 3);
 }
+.logo-img{
+    transition:transform 0.5s ease;
+}
+.logo-img:hover{
+    transform: rotate(360deg);
+}
 .ex-container {
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
